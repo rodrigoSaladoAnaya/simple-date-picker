@@ -33,6 +33,10 @@ class SimpleDatePicker extends LitElement {
     const date = this.date.sdp_parse();
     return months[date.getMonth()] + " - " + date.getFullYear();
   }
+  getDayLabels() {
+    const days = ["D", "L", "M", "M", "J", "V", "S"];
+    return days.map(l => html`<span class="day-label">${l}</span>`)
+  }
   render() {
     return html`
       <style>
@@ -41,6 +45,7 @@ class SimpleDatePicker extends LitElement {
         flex-direction: column;
         align-items: center;
         width: 15em;
+        font-size: var(--sdp-font-size, 1.3em);
       }
       :host > * {
         box-sizing: border-box;
@@ -67,6 +72,21 @@ class SimpleDatePicker extends LitElement {
       #month-year-label {
         user-select: none;
       }
+      .day-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1.3em;
+        height: 1.3em;
+        border: 0.05em solid #fff;
+        color: var(--sdp-day-label-color, #332800);
+        margin: 0.2em;
+        padding: 0.2em;
+        user-select: none;
+      }
+      #days-label-s {
+        display: flex;
+      }
       </style>
       <div id="container">
         <div id="header">
@@ -78,6 +98,7 @@ class SimpleDatePicker extends LitElement {
             <polygon points="32.227,24 21.734,13.507 18.062,17.179 24.874,24 18.058,30.816 21.733,34.492"/>
           </svg>
         </div>
+        <div id="days-label-s">${this.getDayLabels()}</div>
         <sdp-weeks now=${this.date}></sdp-weeks>
       </div>
     `;
