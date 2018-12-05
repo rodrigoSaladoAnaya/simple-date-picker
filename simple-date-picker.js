@@ -13,6 +13,10 @@ String.prototype.sdp_parse = function() {
 };
 
 class SimpleDatePicker extends LitElement {
+  constructor() {
+    super();
+    this.date = (new Date()).sdp_format();
+  }
   static get properties() {
     return {
       date: String
@@ -64,7 +68,6 @@ class SimpleDatePicker extends LitElement {
         user-select: none;
       }
       </style>
-      <input typ="text" maxlength="10" placeholder="YYYY-MM-DD"></input>
       <div id="container">
         <div id="header">
           <svg viewBox="0 0 48 48" @click=${() => this.goto(-1)}>
