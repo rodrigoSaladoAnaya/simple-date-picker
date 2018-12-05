@@ -1,14 +1,17 @@
 import {LitElement, html} from '@polymer/lit-element/lit-element.js';
 import './lib/sdp-day.js';
-/**
- * `simple-date-picker`
- * Date picker with LitElement
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- * blue: #3FA6FD
- */
+import './lib/sdp-weeks.js';
+
+Date.prototype.sdp_format = function() {
+  const _0s = (d) => d < 10 ?  `0${d}` : d;
+  return `${this.getFullYear()}-${_0s(this.getMonth()+1)}-${_0s(this.getDate())}`;
+};
+
+String.prototype.sdp_parse = function() {
+  var p = this.split('-');
+  return new Date(p[0], p[1] - 1, p[2]);
+};
+
 class SimpleDatePicker extends LitElement {
   render() {
     return html`
@@ -19,18 +22,12 @@ class SimpleDatePicker extends LitElement {
       }
       :host > * {
         box-sizing: border-box;
-      }
-      input {
-        width: 100%;
-      }
-      #container {
-        width: 100%;
-        border: 1px solid #bebebe;
+        /* border: 1px solid #cde; */
       }
       </style>
-      <input typ="text" maxlength="8"></input>
+      <input typ="text" maxlength="10" placeholder="YYYY-MM-DD"></input>
       <div id="container">
-        <sdp-day>1</sdp-day>
+        <sdp-weeks now="2018-12-04"></sdp-weeks>
       </div>
     `;
   }
