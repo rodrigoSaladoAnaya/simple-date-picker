@@ -46,6 +46,7 @@ class SimpleDatePicker extends LitElement {
         align-items: center;
         width: 15em;
         font-size: var(--sdp-font-size, 1.3em);
+        font-family: var(--sdp-font-family);
       }
       :host > * {
         box-sizing: border-box;
@@ -59,6 +60,7 @@ class SimpleDatePicker extends LitElement {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: #000;
       }
       svg {
         width: 2.5em;
