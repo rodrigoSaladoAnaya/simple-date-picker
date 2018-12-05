@@ -17,12 +17,17 @@ class SimpleDatePicker extends LitElement {
     return html`
       <style>
       :host {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 15em;
       }
       :host > * {
         box-sizing: border-box;
-        /* border: 1px solid #cde; */
+      }
+      #container {
+        margin-top: 0.6em;
+        background-color: var(--sdp-container-background-color, #fbfbfb);
       }
       </style>
       <input typ="text" maxlength="10" placeholder="YYYY-MM-DD"></input>
