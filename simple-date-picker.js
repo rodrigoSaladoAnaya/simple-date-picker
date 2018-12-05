@@ -13,6 +13,16 @@ String.prototype.sdp_parse = function() {
 };
 
 class SimpleDatePicker extends LitElement {
+  static get properties() {
+    return {
+      date: String
+    }
+  }
+  goto(nMonth) {
+    const cDate = this.date.sdp_parse()
+    const nDate = new Date(cDate.getFullYear(), cDate.getMonth()+nMonth);
+    this.date = nDate.sdp_format();
+  }
   render() {
     return html`
       <style>
@@ -48,15 +58,15 @@ class SimpleDatePicker extends LitElement {
       <input typ="text" maxlength="10" placeholder="YYYY-MM-DD"></input>
       <div id="container">
         <div id="header">
-          <svg viewBox="0 0 48 48">
+          <svg viewBox="0 0 48 48" @click=${() => this.goto(-1)}>
             <polygon points="15.808,24 26.301,13.507 29.973,17.179 23.161,24 29.977,30.816 26.302,34.492"/>
           </svg>
-          <div>Dic, 2018</div>
-          <svg viewBox="0 0 48 48">
+          <div>Month, Year</div>
+          <svg viewBox="0 0 48 48" @click=${() => this.goto(1)}>
             <polygon points="32.227,24 21.734,13.507 18.062,17.179 24.874,24 18.058,30.816 21.733,34.492"/>
           </svg>
         </div>
-        <sdp-weeks now="2018-12-04"></sdp-weeks>
+        <sdp-weeks now=${this.date}></sdp-weeks>
       </div>
     `;
   }
