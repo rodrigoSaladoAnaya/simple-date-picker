@@ -23,6 +23,12 @@ class SimpleDatePicker extends LitElement {
     const nDate = new Date(cDate.getFullYear(), cDate.getMonth()+nMonth);
     this.date = nDate.sdp_format();
   }
+  getMothYearLabel() {
+    const months = ["Ene","Feb","Mar","Abr","May","Jun",
+                  "Jul","Ago","Sep","Oct","Nov","Dic"];
+    const date = this.date.sdp_parse();
+    return months[date.getMonth()] + " - " + date.getFullYear();
+  }
   render() {
     return html`
       <style>
@@ -54,6 +60,9 @@ class SimpleDatePicker extends LitElement {
       svg:hover {
         background-color: var(--sdp-goto-background-color, #f6f6f6);
       }
+      #month-year-label {
+        user-select: none;
+      }
       </style>
       <input typ="text" maxlength="10" placeholder="YYYY-MM-DD"></input>
       <div id="container">
@@ -61,7 +70,7 @@ class SimpleDatePicker extends LitElement {
           <svg viewBox="0 0 48 48" @click=${() => this.goto(-1)}>
             <polygon points="15.808,24 26.301,13.507 29.973,17.179 23.161,24 29.977,30.816 26.302,34.492"/>
           </svg>
-          <div>Month, Year</div>
+          <div id="month-year-label">${this.getMothYearLabel()}</div>
           <svg viewBox="0 0 48 48" @click=${() => this.goto(1)}>
             <polygon points="32.227,24 21.734,13.507 18.062,17.179 24.874,24 18.058,30.816 21.733,34.492"/>
           </svg>
