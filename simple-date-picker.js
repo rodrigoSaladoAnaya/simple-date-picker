@@ -6,6 +6,10 @@ import './lib/sdp-back-button.js';
 import './lib/sdp-header-label.js';
 
 class SimpleDatePicker extends LitElement {
+  constructor() {
+    super();
+    this.date = new Date().__sdp_format();
+  }
   static get properties() {
     return {
       date: String
