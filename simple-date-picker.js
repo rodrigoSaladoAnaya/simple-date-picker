@@ -1,10 +1,16 @@
 import {LitElement, html} from '@polymer/lit-element/lit-element.js';
+import './lib/sdp-config.js';
 import './lib/sdp-header.js';
 import './lib/sdp-forward-button.js';
 import './lib/sdp-back-button.js';
 import './lib/sdp-header-label.js';
 
 class SimpleDatePicker extends LitElement {
+  static get properties() {
+    return {
+      date: String
+    };
+  }
   render() {
     return html `
       <style>
@@ -21,7 +27,7 @@ class SimpleDatePicker extends LitElement {
       </style>
       <sdp-header>
         <sdp-back-button></sdp-back-button>
-        <sdp-header-label></sdp-header-label>
+        <sdp-header-label date="${this.date}"></sdp-header-label>
         <sdp-forward-button></sdp-forward-button>
       </sdp-header>
     `;
