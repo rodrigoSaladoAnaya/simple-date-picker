@@ -4,6 +4,7 @@ import './lib/sdp-header.js';
 import './lib/sdp-forward-button.js';
 import './lib/sdp-back-button.js';
 import './lib/sdp-header-label.js';
+import './lib/sdp-days-labels.js';
 
 class SimpleDatePicker extends LitElement {
   constructor() {
@@ -34,6 +35,7 @@ class SimpleDatePicker extends LitElement {
         <sdp-header-label date="${this.date}"></sdp-header-label>
         <sdp-forward-button></sdp-forward-button>
       </sdp-header>
+      <sdp-days-labels></sdp-days-labels>
     `;
   }
 }
