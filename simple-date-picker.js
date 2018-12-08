@@ -5,6 +5,7 @@ import './lib/sdp-forward-button.js';
 import './lib/sdp-back-button.js';
 import './lib/sdp-header-label.js';
 import './lib/sdp-days-labels.js';
+import './lib/sdp-week-s.js';
 
 class SimpleDatePicker extends LitElement {
   constructor() {
@@ -24,6 +25,7 @@ class SimpleDatePicker extends LitElement {
         flex-direction: column;
         align-items: center;
         width: 15em;
+        padding: 0.6em;
         font-size: var(--sdp-font-size, 1.3em);
         font-family: var(--sdp-font-family);
         background-color: var(--sdp-background-color, #fff);
@@ -36,6 +38,7 @@ class SimpleDatePicker extends LitElement {
         <sdp-forward-button></sdp-forward-button>
       </sdp-header>
       <sdp-days-labels></sdp-days-labels>
+      <sdp-week-s></sdp-week-s>
     `;
   }
 }
