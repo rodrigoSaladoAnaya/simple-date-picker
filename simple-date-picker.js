@@ -1,5 +1,6 @@
 import {LitElement, html} from '@polymer/lit-element/lit-element.js';
 import {styles} from './lib/sdp-style.js'
+import {date_format} from './lib/sdp-utils.js';
 import {backButton, forwardButton, shortDateLable, dayLabels} from './lib/sdp-header.js';
 import {weeks} from './lib/sdp-weeks.js';
 
@@ -10,6 +11,7 @@ class SimpleDatePicker extends LitElement {
     this._shortDateLable = shortDateLable.bind(this);
     this._forwardButton = forwardButton.bind(this);
     this._weeks = weeks.bind(this);
+    this.date = date_format(new Date());
   }
   static get properties() {
     return {
