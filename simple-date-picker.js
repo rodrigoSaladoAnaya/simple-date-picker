@@ -11,12 +11,28 @@ class SimpleDatePicker extends LitElement {
   constructor() {
     super();
     this.addGotoEvent();
+    this.addSelectDate();
     this.date = new Date().__sdp_format();
   }
   static get properties() {
     return {
-      date: String
+      date: {
+        type: String,
+        reflect: true
+      },
+      updateEvent: String
     };
+  }
+  addSelectDate() {
+    this.addEventListener('sdp-select-day', ({detail}) => {
+      this.date = detail.selected;
+      const data = {
+        bubbles: true,
+        composed: true,
+        detail: { selected: detail.selected }
+      };
+      this.dispatchEvent(new CustomEvent(this.updateEvent, data));
+    });
   }
   addGotoEvent() {
     this.addEventListener('sdp-goto', ({detail}) => {

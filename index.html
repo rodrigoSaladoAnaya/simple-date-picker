@@ -27,8 +27,14 @@
       }
     </style>
   </head>
+  <script>
+    document.addEventListener("update-date-demo", ({detail}) => {
+      document.querySelector('#print-date').innerHTML = detail.selected;
+    });
+  </script>
   <body>
       <h1>Basic simple-date-picker demo</h1>
-      <simple-date-picker class="demo" date="2018-10-11"></simple-date-picker>
+      <simple-date-picker class="demo" date="2018-10-11" updateEvent="update-date-demo"></simple-date-picker>
+      <h4 id="print-date"></h4>
   </body>
 </html>
