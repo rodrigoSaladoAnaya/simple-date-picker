@@ -20,9 +20,9 @@ class SimpleDatePicker extends LitElement {
   }
   addGotoEvent() {
     this.addEventListener('sdp-goto', ({detail}) => {
-      const d = this.date.__sdp_parse();
-      const n = new Date(d.getFullYear(), d.getMonth() + detail.next);
-      this.date = n.__sdp_format();
+      const date = this.date.__sdp_parse();
+      const next = new Date(date.getFullYear(), date.getMonth() + detail.next);
+      this.date = next.__sdp_format();
     });
   }
   render() {
@@ -34,7 +34,6 @@ class SimpleDatePicker extends LitElement {
         align-items: center;
         width: 15em;
         padding: 0.6em;
-        color: var(--sdp-color, #000);
         font-size: var(--sdp-font-size, 1.3em);
         font-family: var(--sdp-font-family);
         background-color: var(--sdp-background-color, #fff);
