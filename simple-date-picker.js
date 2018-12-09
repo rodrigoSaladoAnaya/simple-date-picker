@@ -46,7 +46,7 @@ class SimpleDatePicker extends LitElement {
         <sdp-forward-button></sdp-forward-button>
       </sdp-header>
       <sdp-days-labels></sdp-days-labels>
-      <sdp-week-s></sdp-week-s>
+      <sdp-week-s date=${this.date}></sdp-week-s>
     `;
   }
 }
