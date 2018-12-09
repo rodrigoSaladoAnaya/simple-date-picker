@@ -10,6 +10,6 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 
 ```
 $ polymer serve
-or
 $ polymer build --name prod
 ```
+[DEMO](https://rodrigosaladoanaya.github.io/simple-date-picker/)
