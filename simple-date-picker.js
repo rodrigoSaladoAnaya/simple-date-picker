@@ -34,6 +34,7 @@ class SimpleDatePicker extends LitElement {
         align-items: center;
         width: 15em;
         padding: 0.6em;
+        color: var(--sdp-color, #000);
         font-size: var(--sdp-font-size, 1.3em);
         font-family: var(--sdp-font-family);
         background-color: var(--sdp-background-color, #fff);
