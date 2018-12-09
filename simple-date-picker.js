@@ -10,8 +10,14 @@ class SimpleDatePicker extends LitElement {
       date: {
         type: String,
         reflect: true
-      }
+      },
+      _selected: String
     };
+  }
+  updated() {
+    if(this._selected === undefined) {
+      this._selected = this.date;
+    }
   }
   render() {
     return html `
@@ -25,7 +31,7 @@ class SimpleDatePicker extends LitElement {
         ${dayLabels()}
       </div>
       <div>
-        ${weeks(this.date)}
+        ${weeks.bind(this)(this.date, this._selected)}
       </div>
     `;
   }
