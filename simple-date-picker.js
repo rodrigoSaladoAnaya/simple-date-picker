@@ -2,9 +2,15 @@ import {LitElement, html} from '@polymer/lit-element/lit-element.js';
 import {styles} from './lib/sdp-style.js'
 import {backButton, forwardButton, shortDateLable, dayLabels} from './lib/sdp-header.js';
 import {weeks} from './lib/sdp-weeks.js';
-import {go_back, go_forward} from './lib/sdp-utils.js';
 
 class SimpleDatePicker extends LitElement {
+  constructor() {
+    super();
+    this._backButton = backButton.bind(this);
+    this._shortDateLable = shortDateLable.bind(this);
+    this._forwardButton = forwardButton.bind(this);
+    this._weeks = weeks.bind(this);
+  }
   static get properties() {
     return {
       date: {
@@ -23,15 +29,15 @@ class SimpleDatePicker extends LitElement {
     return html `
       ${styles}
       <div class="header">
-        ${backButton(go_back.bind(this))}
-        ${shortDateLable.bind(this)()}
-        ${forwardButton(go_forward.bind(this))}
+        ${this._backButton()}
+        ${this._shortDateLable()}
+        ${this._forwardButton()}
       </div>
       <div class="day-label-s">
         ${dayLabels()}
       </div>
       <div>
-        ${weeks.bind(this)()}
+        ${this._weeks()}
       </div>
     `;
   }
