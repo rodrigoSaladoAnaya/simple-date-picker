@@ -29,17 +29,15 @@
         --sdp-goto-background-color: #ffedb2;
       }
     </style>
-  <script> console.log("V1");
-document.addEventListener("update-date-demo", ({
-  detail
-}) => {
-  document.querySelector('#print-date').innerHTML = detail.selected;
-});</script></head>
-
+  </head>
   <body>
       <h1>Basic simple-date-picker demo</h1>
-      <simple-date-picker class="demo" date="2018-10-11" updateevent="update-date-demo"></simple-date-picker>
-      <h4 id="print-date">0000-00-00</h4>
+      <simple-date-picker class="demo"></simple-date-picker>
+      <h4 id="print-date">YYYY-MM-DD</h4>
+  
+  <script>document.querySelector('simple-date-picker').onSelect = function (selected) {
+  document.querySelector('#print-date').innerHTML = selected;
+};</script>
 
 
 </body></html>
