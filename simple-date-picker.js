@@ -10,12 +10,20 @@ import './lib/sdp-week-s.js';
 class SimpleDatePicker extends LitElement {
   constructor() {
     super();
+    this.addGotoEvent();
     this.date = new Date().__sdp_format();
   }
   static get properties() {
     return {
       date: String
     };
+  }
+  addGotoEvent() {
+    this.addEventListener('sdp-goto', ({detail}) => {
+      const d = this.date.__sdp_parse()
+      const n = new Date(d.getFullYear(), d.getMonth() + detail.next);
+      this.date = n.__sdp_format();
+    });
   }
   render() {
     return html `
@@ -34,7 +42,7 @@ class SimpleDatePicker extends LitElement {
       </style>
       <sdp-header>
         <sdp-back-button></sdp-back-button>
-        <sdp-header-label date="${this.date}"></sdp-header-label>
+        <sdp-header-label date=${this.date}></sdp-header-label>
         <sdp-forward-button></sdp-forward-button>
       </sdp-header>
       <sdp-days-labels></sdp-days-labels>
