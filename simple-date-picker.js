@@ -1,68 +1,9 @@
 import {LitElement, html} from '@polymer/lit-element/lit-element.js';
-import './lib/sdp-config.js';
-import './lib/sdp-header.js';
-import './lib/sdp-forward-button.js';
-import './lib/sdp-back-button.js';
-import './lib/sdp-header-label.js';
-import './lib/sdp-days-labels.js';
-import './lib/sdp-week-s.js';
 
 class SimpleDatePicker extends LitElement {
-  constructor() {
-    super();
-    this.addGotoEvent();
-    this.addSelectDate();
-    this.date = new Date().__sdp_format();
-  }
-  static get properties() {
-    return {
-      date: {
-        type: String,
-        reflect: true
-      },
-      updateEvent: String
-    };
-  }
-  addSelectDate() {
-    this.addEventListener('sdp-select-day', ({detail}) => {
-      this.date = detail.selected;
-      const data = {
-        bubbles: true,
-        composed: true,
-        detail: { selected: detail.selected }
-      };
-      this.dispatchEvent(new CustomEvent(this.updateEvent, data));
-    });
-  }
-  addGotoEvent() {
-    this.addEventListener('sdp-goto', ({detail}) => {
-      const date = this.date.__sdp_parse();
-      const next = new Date(date.getFullYear(), date.getMonth() + detail.next);
-      this.date = next.__sdp_format();
-    });
-  }
   render() {
     return html `
-      <style>
-      :host {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 15em;
-        padding: 0.6em;
-        font-size: var(--sdp-font-size, 1.3em);
-        font-family: var(--sdp-font-family);
-        background-color: var(--sdp-background-color, #fff);
-        border: 0.05em solid var(--sdp-border, #dfdfdf);
-      }
-      </style>
-      <sdp-header>
-        <sdp-back-button></sdp-back-button>
-        <sdp-header-label date=${this.date}></sdp-header-label>
-        <sdp-forward-button></sdp-forward-button>
-      </sdp-header>
-      <sdp-days-labels></sdp-days-labels>
-      <sdp-week-s date=${this.date}></sdp-week-s>
+      From 0
     `;
   }
 }
