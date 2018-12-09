@@ -13,6 +13,9 @@ class SimpleDatePicker extends LitElement {
   }
   static get properties() {
     return {
+      onUpdateDate: {
+        type: Function
+      },
       date: {
         type: String,
         reflect: true
