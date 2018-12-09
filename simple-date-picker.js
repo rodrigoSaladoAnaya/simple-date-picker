@@ -38,9 +38,7 @@ class SimpleDatePicker extends LitElement {
       <div class="day-label-s">
         ${dayLabels()}
       </div>
-      <div>
-        ${this._weeks()}
-      </div>
+      ${this._weeks()}
     `;
   }
 }
