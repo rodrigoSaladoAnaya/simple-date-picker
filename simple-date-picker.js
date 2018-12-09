@@ -20,7 +20,7 @@ class SimpleDatePicker extends LitElement {
   }
   addGotoEvent() {
     this.addEventListener('sdp-goto', ({detail}) => {
-      const d = this.date.__sdp_parse()
+      const d = this.date.__sdp_parse();
       const n = new Date(d.getFullYear(), d.getMonth() + detail.next);
       this.date = n.__sdp_format();
     });
