@@ -1,6 +1,7 @@
 import {LitElement, html} from '@polymer/lit-element/lit-element.js';
 import {styles} from './lib/sdp-style.js'
 import {backButton, forwardButton, shortDateLable, dayLabels} from './lib/sdp-header.js';
+import {weeks} from './lib/sdp-weeks.js';
 import {go_back, go_forward} from './lib/sdp-utils.js';
 
 class SimpleDatePicker extends LitElement {
@@ -22,6 +23,9 @@ class SimpleDatePicker extends LitElement {
       </div>
       <div class="day-label-s">
         ${dayLabels()}
+      </div>
+      <div>
+        ${weeks(this.date)}
       </div>
     `;
   }
