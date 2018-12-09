@@ -1,4 +1,4 @@
-import {LitElement, html} from '@polymer/lit-element/lit-element.js';
+import { LitElement, html } from "./node_modules/@polymer/lit-element/lit-element.js";
 import './lib/sdp-config.js';
 import './lib/sdp-header.js';
 import './lib/sdp-forward-button.js';
@@ -14,6 +14,7 @@ class SimpleDatePicker extends LitElement {
     this.addSelectDate();
     this.date = new Date().__sdp_format();
   }
+
   static get properties() {
     return {
       date: {
@@ -23,26 +24,36 @@ class SimpleDatePicker extends LitElement {
       updateEvent: String
     };
   }
+
   addSelectDate() {
-    this.addEventListener('sdp-select-day', ({detail}) => {
+    this.addEventListener('sdp-select-day', ({
+      detail
+    }) => {
       this.date = detail.selected;
       const data = {
         bubbles: true,
         composed: true,
-        detail: { selected: detail.selected }
+        detail: {
+          selected: detail.selected
+        }
       };
       this.dispatchEvent(new CustomEvent(this.updateEvent, data));
     });
   }
+
   addGotoEvent() {
-    this.addEventListener('sdp-goto', ({detail}) => {
+    this.addEventListener('sdp-goto', ({
+      detail
+    }) => {
       const date = this.date.__sdp_parse();
+
       const next = new Date(date.getFullYear(), date.getMonth() + detail.next);
       this.date = next.__sdp_format();
     });
   }
+
   render() {
-    return html `
+    return html`
       <style>
       :host {
         display: flex;
@@ -65,5 +76,7 @@ class SimpleDatePicker extends LitElement {
       <sdp-week-s date=${this.date}></sdp-week-s>
     `;
   }
+
 }
+
 customElements.define('simple-date-picker', SimpleDatePicker);

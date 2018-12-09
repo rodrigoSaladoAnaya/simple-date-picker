@@ -1,1 +1,44 @@
-Test
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>simple-date-picker demo</title>
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="./simple-date-picker.js"></script>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      h1 {
+        color: #383518;
+        font-size: 2.5em;
+        font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
+        margin-bottom: 1.5em;
+      }
+      h4 {
+        font-family: Consolas,monaco,monospace;
+        border: 0.05em solid #ffd700;
+        padding: 1em;
+      }
+      .demo {
+        --sdp-font-size: 0.75em;
+        --sdp-font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+        --sdp-header-color: #383518;
+        --sdp-header-background-color: #ffd700;
+        --sdp-goto-background-color: #ffedb2;
+      }
+    </style>
+  <script>document.addEventListener("update-date-demo", ({
+  detail
+}) => {
+  document.querySelector('#print-date').innerHTML = detail.selected;
+});</script></head>
+
+  <body>
+      <h1>Basic simple-date-picker demo</h1>
+      <simple-date-picker class="demo" date="2018-10-11" updateevent="update-date-demo"></simple-date-picker>
+      <h4 id="print-date">0000-00-00</h4>
+
+
+</body></html>
