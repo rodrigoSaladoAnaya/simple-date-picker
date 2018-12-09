@@ -24,14 +24,14 @@ class SimpleDatePicker extends LitElement {
       ${styles}
       <div class="header">
         ${backButton(go_back.bind(this))}
-        ${shortDateLable(this.date)}
+        ${shortDateLable.bind(this)()}
         ${forwardButton(go_forward.bind(this))}
       </div>
       <div class="day-label-s">
         ${dayLabels()}
       </div>
       <div>
-        ${weeks.bind(this)(this.date, this._selected)}
+        ${weeks.bind(this)()}
       </div>
     `;
   }
